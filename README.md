@@ -18,13 +18,13 @@ python -m pip install -r requirements.txt
 How to shorten URL:
 ```sh
 C:\PythonProjects\CountClicks>python main.py https://www.google.com
-Битлинк https://bit.ly/3s50Az0
+Bitlink https://bit.ly/3s50Az0
 ```
 
 How to count clicks:
 ```sh
 C:\PythonProjects\CountClicks>python main.py https://bit.ly/3s50Az0
-По вашей ссылке прошли 2 раз(а)
+Your URL clicks count: 2 time(s)
 ```
 If URL to short is broken there will be error message:
 

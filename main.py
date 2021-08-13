@@ -73,7 +73,7 @@ def main():
         except requests.exceptions.HTTPError:
             print(f"Bitlink can't give data about clicks because URL {url_to_check} is broken!")
             return
-        print("Your URL clicks count: {clicks_count} time(s)")
+        print(f"Your URL clicks count: {clicks_count} time(s)")
     else:
         try:
             bitlink = shorten_link(bitly_api_key, initial_url)
