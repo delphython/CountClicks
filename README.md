@@ -44,7 +44,3 @@ Bitlink can't give short URL because URL https://bit.ly/3s50Az9 is broken!
 Vitaly Klyukin – [@delphython](https://t.me/delphython) – [delphython@gmail.com](mailto:delphython@gmail.com)
 
 [https://github.com/delphython](https://github.com/delphython/)
-
-## License
-
-A short snippet describing the license (MIT, Apache, etc.)
