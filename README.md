@@ -45,7 +45,7 @@ if Bitlink URL is broken there will be error message:
 
 ```sh
 C:\PythonProjects\CountClicks>python main.py https://bit.ly/3s50Az9
-Bitlink can't give short URL because URL https://bit.ly/3s50Az9 is broken!
+Bitlink can't give data about clicks because URL https://bit.ly/3s50Az9 is broken!
 ```
 
 ## Meta
