@@ -53,11 +53,11 @@ def main():
     bitly_api_key = os.environ["BITLY_API_KEY"]
 
     parser = argparse.ArgumentParser(
-        description='''Bitly shortener and clicks counter is a console utility
-            that shortens links using Bitly URL shortener and counts
-            clicks by Bitlink short URL.'''
+        description="Bitly shortener and clicks counter is a console utility \
+            that shortens links using Bitly URL shortener and counts \
+            clicks by Bitlink short URL."
     )
-    parser.add_argument('url', help='Input bitlink or url')
+    parser.add_argument("url'\", help="Input bitlink or url")
     args = parser.parse_args()
 
     initial_url = args.url
