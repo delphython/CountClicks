@@ -47,20 +47,22 @@ def is_bitlink(token, url):
     return response.ok
 
 
-def main():
-    load_dotenv()
-
-    bitly_api_key = os.environ["BITLY_API_KEY"]
-
+def parsed_args():
     parser = argparse.ArgumentParser(
         description="Bitly shortener and clicks counter is a console utility \
             that shortens links using Bitly URL shortener and counts \
             clicks by Bitlink short URL."
     )
-    parser.add_argument("url'\", help="Input bitlink or url")
-    args = parser.parse_args()
+    parser.add_argument("url", help="Input bitlink or url")
+    return parser.parse_args()
 
-    initial_url = args.url
+
+def main():
+    load_dotenv()
+
+    bitly_api_key = os.environ["BITLY_API_KEY"]
+
+    initial_url = parsed_args().url
     parsed_initial_url = urlparse(initial_url)
     url_to_check = f"{parsed_initial_url.netloc}{parsed_initial_url.path}"
 
@@ -69,7 +71,8 @@ def main():
             clicks_count = count_clicks(bitly_api_key, url_to_check)
         except requests.exceptions.HTTPError:
             print(
-                f"Bitlink can't give data about clicks because URL {url_to_check} is broken!")
+                f"Bitlink can't give data about clicks because URL \
+                {url_to_check} is broken!")
             return
         print(f"Your URL clicks count: {clicks_count} time(s)")
     else:
@@ -77,7 +80,8 @@ def main():
             bitlink = shorten_link(bitly_api_key, initial_url)
         except requests.exceptions.HTTPError:
             print(
-                f"Bitlink can't give short URL because URL {initial_url} is broken!")
+                f"Bitlink can't give short URL because URL \
+                {initial_url} is broken!")
             return
         print("Bitlink", bitlink)
 
