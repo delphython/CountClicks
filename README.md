@@ -13,7 +13,7 @@ Use `pip` to install dependences:
 python -m pip install -r requirements.txt
 ```
 
-## Intsallation
+## Installation
 You have to set BITLY_API_KEY enviroment variable before use script. This is necessary to get access to Bitly API.
 
 1. You have to get API Bitly token. Visit https://bitly.com/ and create a Bitly account. Then generate an [access token](https://bitly.is/accesstoken). It looks like "9b7934f7d7f422a6sddf92df0663197ff0409ed82". See [documentation](https://dev.bitly.com/) for instructions.
