@@ -5,9 +5,7 @@ from dotenv import load_dotenv
 import argparse
 
 
-dotenv_path = os.path.join(os.path.dirname(__file__), '.gitignore')
-if os.path.exists(dotenv_path):
-    load_dotenv(dotenv_path)
+load_dotenv()
 
 
 def shorten_link(token, url):
@@ -56,7 +54,7 @@ def main():
     bitly_api_key = os.environ["BITLY_API_KEY"]
 
     parser = argparse.ArgumentParser(
-        description = '''Bitly shortener and clicks counter is a console utility
+        description='''Bitly shortener and clicks counter is a console utility
             that shortens links using Bitly URL shortener and counts
             clicks by Bitlink short URL.'''
     )
@@ -71,14 +69,16 @@ def main():
         try:
             clicks_count = count_clicks(bitly_api_key, url_to_check)
         except requests.exceptions.HTTPError:
-            print(f"Bitlink can't give data about clicks because URL {url_to_check} is broken!")
+            print(
+                f"Bitlink can't give data about clicks because URL {url_to_check} is broken!")
             return
         print(f"Your URL clicks count: {clicks_count} time(s)")
     else:
         try:
             bitlink = shorten_link(bitly_api_key, initial_url)
         except requests.exceptions.HTTPError:
-            print(f"Bitlink can't give short URL because URL {initial_url} is broken!")
+            print(
+                f"Bitlink can't give short URL because URL {initial_url} is broken!")
             return
         print("Bitlink", bitlink)
 
