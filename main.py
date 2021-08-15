@@ -57,28 +57,6 @@ def get_parsed_args():
     return parser.parse_args()
 
 
-def get_clicks_count(token, url):
-    try:
-        clicks_count = count_clicks(token, url)
-    except requests.exceptions.HTTPError:
-        print(
-            f"Bitlink can't give data about clicks because URL \
-            {url} is broken!")
-        return
-    return clicks_count
-
-
-def get_bitlink(token, url):
-    try:
-        bitlink = shorten_link(token, url)
-    except requests.exceptions.HTTPError:
-        print(
-            f"Bitlink can't give short URL because URL \
-            {url} is broken!")
-        return
-    return bitlink
-
-
 def main():
     load_dotenv()
 
@@ -89,10 +67,22 @@ def main():
     url_to_check = f"{parsed_initial_url.netloc}{parsed_initial_url.path}"
 
     if is_bitlink(bitly_api_key, url_to_check):
+        try:
+            clicks_count = count_clicks(bitly_api_key, url_to_check)
+        except requests.exceptions.HTTPError:
+            print(
+                f"Bitlink can't give data about clicks because URL {url_to_check} is broken!")
+            return
         print(
-            f"Your URL clicks count: {get_clicks_count(bitly_api_key, url_to_check)} time(s)")
+            f"Your URL clicks count: {clicks_count} time(s)")
     else:
-        print(f"Bitlink {get_bitlink(bitly_api_key, initial_url)}")
+        try:
+            bitlink = shorten_link(bitly_api_key, initial_url)
+        except requests.exceptions.HTTPError:
+            print(
+                f"Bitlink can't give short URL because URL {initial_url} is broken!")
+            return
+        print(f"Bitlink {bitlink}")
 
 
 if __name__ == "__main__":
