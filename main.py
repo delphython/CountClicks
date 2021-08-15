@@ -47,7 +47,7 @@ def is_bitlink(token, url):
     return response.ok
 
 
-def parsed_args():
+def get_parsed_args():
     parser = argparse.ArgumentParser(
         description="Bitly shortener and clicks counter is a console utility \
             that shortens links using Bitly URL shortener and counts \
@@ -84,7 +84,7 @@ def main():
 
     bitly_api_key = os.environ["BITLY_API_KEY"]
 
-    initial_url = parsed_args().url
+    initial_url = get_parsed_args().url
     parsed_initial_url = urlparse(initial_url)
     url_to_check = f"{parsed_initial_url.netloc}{parsed_initial_url.path}"
 
